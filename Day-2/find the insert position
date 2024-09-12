@@ -1,0 +1,22 @@
+
+  int searchInsertK(vector<int>Arr, int N, int k)
+    {
+        // code here
+        int start = 0 , end = N-1 , ans = N,mid;
+        while(start<=end){
+            mid = start+(end-start)/2;
+            if(Arr[mid]==k){
+                ans = mid;
+                break;
+                
+            }
+            else if(Arr[mid]<k){
+                start = mid+1;
+            }
+            else{
+                ans = mid ; 
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
