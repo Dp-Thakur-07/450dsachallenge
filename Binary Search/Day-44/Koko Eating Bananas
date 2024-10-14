@@ -1,0 +1,37 @@
+class Solution {
+public:
+    long long gettotalhourse(vector<int>& piles, int mid) {
+        long long totalhours = 0;
+        for (int i = 0; i < piles.size(); i++) {
+            totalhours += ceil(piles[i] / (double)mid);
+        }
+        return totalhours;
+    }
+
+    int func(vector<int>& piles) {
+        int maxi = INT_MIN;
+        for (int i = 0; i < piles.size(); i++) {
+            maxi = max(maxi, piles[i]);
+        }
+        return maxi;
+    }
+
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int start =1;
+        int end = func(piles);
+        int mid, ans = -1;
+        int n = piles.size();
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+            long long hourstoeat = gettotalhourse(piles, mid);
+
+            if (hourstoeat <= h) {
+                ans = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
