@@ -1,0 +1,55 @@
+int checkPage(vector<int> &arr, int targetPage){
+
+    int pageCount = 0, studCount = 1 ;
+
+    for(auto it: arr){
+
+        if(it+pageCount<=targetPage)
+
+            pageCount += it;
+
+        else{
+
+            studCount++;
+
+            pageCount = it;
+
+        }
+
+    }
+
+    return studCount;
+
+}
+
+int findPages(vector<int>& arr, int n, int m) {
+
+    // Write your code here.
+
+    if(n<m) return -1;
+
+ 
+
+    int st = *max_element(arr.begin(), arr.end());
+
+    int end = accumulate(arr.begin(), arr.end(), 0);
+
+ 
+
+    while(st<=end){
+
+        int mid = st+(end-st)/2;
+
+ 
+
+        int studCount = checkPage(arr, mid);
+
+        if(studCount > m ) st = mid+1;
+
+        else end = mid-1;
+
+    }
+
+    return st;
+
+}
