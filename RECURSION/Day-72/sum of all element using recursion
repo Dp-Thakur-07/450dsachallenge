@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+
+int sumofallelem(int arr[],int index , int n){
+
+    if(index==n){
+        return 0 ;
+    }
+
+   return arr[index]+sumofallelem(arr,index+1,n);
+}
+
+int main(){
+    int arr[5]= {3,2,4,5,6};
+    cout<<sumofallelem(arr,0,5);
+}
