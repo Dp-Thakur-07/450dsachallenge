@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+
+int getminelement(int arr[],int index,int n){
+    if(index==n-1){
+        return arr[index];
+    }
+return min(arr[index],getminelement(arr,index+1,n));
+}
+
+int main(){
+    int arr[5] = {2,5,7,1,8};
+   
+  cout<<getminelement(arr,0,5);
+}
