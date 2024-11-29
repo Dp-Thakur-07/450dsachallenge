@@ -1,0 +1,31 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void subsequence(int arr[],int index , int n , vector<vector<int>>&ans , vector<int>temp){
+   if(index==n){
+    ans.push_back(temp);
+    return;
+   }
+   subsequence(arr , index+1 , n , ans , temp);
+   temp.push_back(arr[index]);
+   subsequence(arr , index+1 , n , ans , temp);
+
+}
+
+int main(){
+    int arr[] = {1,2,3};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    vector<vector<int>>ans;
+    vector<int>temp;
+   subsequence(arr , 0 , n , ans , temp);
+  
+   for (const auto& seq : ans) {
+        cout << "{ ";
+        for (const auto& num : seq) {
+            cout << num << " ";
+        }
+        cout << "}" << endl;
+    }
+   
+}
